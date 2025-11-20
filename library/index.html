@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management</title>
+
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+
+<h1>Library Management System</h1>
+
+<div class="form-box">
+    <label>Book Title:</label>
+    <input type="text" id="title" placeholder="Enter book title">
+
+    <label>Publication Year:</label>
+    <input type="text" id="year" placeholder="Enter publication year">
+
+    <button id="addBtn">Add Book</button>
+</div>
+
+<h2>Book List</h2>
+
+<table id="bookTable">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+document.getElementById("addBtn").onclick = function() {
+    const title = document.getElementById("title").value.trim();
+    const year = document.getElementById("year").value.trim();
+    const currentYear = new Date().getFullYear();
+
+    const titleCheck = /^[A-Za-z]+$/;
+
+    if (!titleCheck.test(title)) {
+        alert("Title must contain only letters.");
+        return;
+    }
+
+    if (!/^\d{4}$/.test(year) || year < 1900 || year > currentYear) {
+        alert("Please enter a valid year between 1900 and " + currentYear);
+        return;
+    }
+
+    const tableBody = document.querySelector("#bookTable tbody");
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+        <td>${title}</td>
+        <td>${year}</td>
+    `;
+
+    if (year < 2000) {
+        row.classList.add("old-book");
+    } else {
+        row.classList.add("new-book");
+    }
+
+    tableBody.appendChild(row);
+
+    document.getElementById("title").value = "";
+    document.getElementById("year").value = "";
+};
+</script>
+
+</body>
+</html>

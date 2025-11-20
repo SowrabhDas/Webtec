@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+
+th {
+    background-color: #eee;
+}
+
+.old-book {
+    background-color: #d3d3d3; 
+}
+
+.new-book {
+    background-color: #98f59b; 
+}

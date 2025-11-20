@@ -1,0 +1,16 @@
+.form-box {
+    margin-bottom: 20px;
+}
+
+.form-box label {
+    margin-right: 10px;
+}
+
+.form-box input {
+    padding: 6px;
+    margin-right: 15px;
+}
+
+button {
+    padding: 7px 12px;
+}
